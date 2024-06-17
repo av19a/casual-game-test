@@ -20,7 +20,7 @@ public class JoystickSystem : IEcsRunSystem
         {
             ref var moveComponent = ref movementPool.Get(i);
             moveComponent.Direction = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical);
-            Debug.Log($"Joystick Input: Horizontal = {_joystick.Horizontal}, Vertical = {_joystick.Vertical}");
+            // Debug.Log($"Joystick Input: Horizontal = {_joystick.Horizontal}, Vertical = {_joystick.Vertical}");
         }
     }
 }

@@ -22,6 +22,5 @@ public class ObjectGeneratorSystem : IEcsRunSystem
         newItem.transform.position = new Vector3(Random.Range(-5, 5), 1, Random.Range(-5, 5));
         newItem.tag = "Item";
         newItem.GetComponent<BoxCollider>().isTrigger = true;
-        // newItem.AddComponent<BoxCollider>().isTrigger = true;
     }
 }

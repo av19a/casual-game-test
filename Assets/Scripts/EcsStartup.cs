@@ -27,6 +27,7 @@ public class EcsStartup : MonoBehaviour
             .Add(new StackSystem())
             .Add(new SelectionSystem())
             .Add(new ResetSystem())
+            .Add(new DropSystem())
             .Add(new ObjectGeneratorSystem())
             .Add(movementSystem) // Add the MovementSystem
             .Init();
