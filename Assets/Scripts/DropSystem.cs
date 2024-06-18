@@ -22,6 +22,11 @@ public class DropSystem : IEcsRunSystem
                     item.GetComponent<Collider>().enabled = true;
                     // Add any additional drop logic here
                 }
+                
+                if (stackComponent.Items.Count == 0)
+                {
+                    stackComponent.IsHolding = false;
+                }
             }
         }
     }

@@ -17,6 +17,7 @@ public class ResetSystem : IEcsRunSystem
                 while (stackComponent.Items.Count > 0)
                 {
                     GameObject item = stackComponent.Items.Pop();
+                    stackComponent.IsHolding = false;
                     item.transform.position = stackComponent.StackPoint.position + new Vector3(Random.Range(-5, 5), 0, 0);
                     item.transform.SetParent(null);
                     item.GetComponent<Collider>().enabled = true;

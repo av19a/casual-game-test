@@ -9,6 +9,7 @@ public class MovementSystem : IEcsRunSystem
         var filter = world.Filter<MovementComponent>().Inc<PlayerComponent>().End();
         var movementPool = world.GetPool<MovementComponent>();
         var playerPool = world.GetPool<PlayerComponent>();
+        var stackPool = world.GetPool<StackComponent>();
     
         // Debug.Log("Entities with MovementComponent and PlayerComponent: " + filter.GetEntitiesCount());
         
@@ -16,6 +17,7 @@ public class MovementSystem : IEcsRunSystem
         {
             ref var moveComponent = ref movementPool.Get(i);
             ref var playerComponent = ref playerPool.Get(i);
+            ref var stackComponent = ref stackPool.Get(i);
 
             Vector3 direction = moveComponent.Direction;
             float maxSpeed = 5f; // Adjust the maximum speed as needed
@@ -26,6 +28,8 @@ public class MovementSystem : IEcsRunSystem
             Animator animator = playerComponent.Transform.GetComponentInChildren<Animator>();
             if (animator != null)
             {
+                animator.SetBool("InHand", stackComponent.IsHolding);
+
                 animator.SetFloat("Speed", targetSpeed);
             }
 
