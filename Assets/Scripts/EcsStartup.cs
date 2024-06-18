@@ -8,7 +8,8 @@ public class EcsStartup : MonoBehaviour
     
     public Joystick joystick;
     public PlayerInitializer playerInitializer; // Reference to the PlayerInitializer script
-
+    public GameObject prefab;
+    
     void Start()
     {
         _world = new EcsWorld();
@@ -19,6 +20,9 @@ public class EcsStartup : MonoBehaviour
     
         var joystickSystem = new JoystickSystem();
         joystickSystem.Initialize(joystick);
+
+        var objectGeneratorSystem = new ObjectGeneratorSystem();
+        objectGeneratorSystem.prefab = prefab;
     
         var movementSystem = new MovementSystem();
     
@@ -28,7 +32,7 @@ public class EcsStartup : MonoBehaviour
             .Add(new SelectionSystem())
             .Add(new ResetSystem())
             .Add(new DropSystem())
-            .Add(new ObjectGeneratorSystem())
+            .Add(objectGeneratorSystem)
             .Add(movementSystem) // Add the MovementSystem
             .Init();
     }
