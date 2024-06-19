@@ -20,7 +20,7 @@ public class ObjectGeneratorSystem : IEcsRunSystem
     {
         // Implement object generation logic
         GameObject newItem = GameObject.Instantiate(prefab);
-        newItem.transform.position = new Vector3(Random.Range(-5, 5), 1, Random.Range(-5, 5));
+        newItem.transform.position = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
         newItem.tag = "Item";
         newItem.GetComponent<BoxCollider>().isTrigger = true;
     }

@@ -8,6 +8,7 @@ public class EcsStartup : MonoBehaviour
     
     public Joystick joystick;
     public PlayerInitializer playerInitializer; // Reference to the PlayerInitializer script
+    public TableInitializer tableInitializer; // Reference to the PlayerInitializer script
     public GameObject prefab;
     
     void Start()
@@ -17,6 +18,7 @@ public class EcsStartup : MonoBehaviour
         
         // Initialize the player
         playerInitializer.Initialize(_world);
+        tableInitializer.Initialize(_world);
     
         var joystickSystem = new JoystickSystem();
         joystickSystem.Initialize(joystick);
@@ -29,6 +31,7 @@ public class EcsStartup : MonoBehaviour
         _systems
             .Add(joystickSystem)
             .Add(new StackSystem())
+            .Add(new TableSystem())
             .Add(new SelectionSystem())
             .Add(new ResetSystem())
             .Add(new DropSystem())
