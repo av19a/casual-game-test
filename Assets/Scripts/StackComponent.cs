@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public struct StackComponent
@@ -7,6 +8,7 @@ public struct StackComponent
     public float StackHeight;
     public Stack<GameObject> Items;
     public bool IsHolding;
+    public TMP_Text StackCountText;
 }
 
 public struct SelectableComponent { }

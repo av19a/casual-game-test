@@ -23,6 +23,7 @@ public class StackSystem : IEcsRunSystem
                     stackComponent.Items.Push(item);
                     stackComponent.IsHolding = true;
                     item.GetComponent<Collider>().enabled = false;
+                    stackComponent.StackCountText.text = stackComponent.Items.Count.ToString();
                 }
             }
         }

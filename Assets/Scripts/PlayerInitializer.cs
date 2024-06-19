@@ -1,12 +1,14 @@
 using UnityEngine;
 using Leopotam.EcsLite;
 using System.Collections.Generic;
+using TMPro;
 
 public class PlayerInitializer : MonoBehaviour
 {
     public Transform stackPoint;
     public Transform playerTransform; // Reference to the player's transform
     public float stackHeight = 1f;
+    public TMP_Text stackCountText;
     
     public void Initialize(EcsWorld world)
     {
@@ -22,6 +24,7 @@ public class PlayerInitializer : MonoBehaviour
         stackComponent.StackPoint = stackPoint;
         stackComponent.StackHeight = stackHeight;
         stackComponent.Items = new Stack<GameObject>();
+        stackComponent.StackCountText = stackCountText;
     
         selectablePool.Add(playerEntity);
         resetPool.Add(playerEntity);

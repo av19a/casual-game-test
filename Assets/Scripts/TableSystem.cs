@@ -30,6 +30,7 @@ public class TableSystem : IEcsRunSystem
                             item.transform.localPosition = new Vector3(0, tableComponent.Items.Count * tableComponent.StackHeight, 0);
                             tableComponent.Items.Push(item);
                             item.GetComponent<Collider>().enabled = true;
+                            stackComponent.StackCountText.text = stackComponent.Items.Count.ToString();
                         }
                     }
                 }

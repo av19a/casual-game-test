@@ -18,15 +18,14 @@ public class MovementSystem : IEcsRunSystem
             ref var stackComponent = ref stackPool.Get(i);
 
             Vector3 direction = moveComponent.Direction;
-            float maxSpeed = 10f; // Adjust the maximum speed as needed
+            float maxSpeed = 5f; // Adjust the maximum speed as needed
             float targetSpeed = direction.magnitude * maxSpeed; // Speed depends on joystick positioning
             
             // Get the Rigidbody component and set its velocity
             Rigidbody rb = playerComponent.Transform.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                Vector3 newPosition = playerComponent.Transform.position + direction * targetSpeed * Time.deltaTime;
-                rb.MovePosition(newPosition);
+                rb.velocity = direction * targetSpeed;
             }
             
             // Set the "Speed" parameter in the Animator
@@ -34,7 +33,6 @@ public class MovementSystem : IEcsRunSystem
             if (animator != null)
             {
                 animator.SetBool("InHand", stackComponent.IsHolding);
-
                 animator.SetFloat("Speed", targetSpeed);
             }
 

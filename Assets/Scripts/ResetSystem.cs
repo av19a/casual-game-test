@@ -21,6 +21,7 @@ public class ResetSystem : IEcsRunSystem
                     item.transform.position = stackComponent.StackPoint.position + new Vector3(Random.Range(-5, 5), 0, 0);
                     item.transform.SetParent(null);
                     item.GetComponent<Collider>().enabled = true;
+                    // stackComponent.StackCountText.text = stackComponent.Items.Count.ToString();
                     // Add any additional reset logic here
                 }
             }
