@@ -1,5 +1,6 @@
 using UnityEngine;
 using Leopotam.EcsLite;
+using UnityEngine.UI;
 
 public class EcsStartup : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class EcsStartup : MonoBehaviour
     public PlayerInitializer playerInitializer; // Reference to the PlayerInitializer script
     public TableInitializer tableInitializer; // Reference to the PlayerInitializer script
     public GameObject prefab;
+    public Button dropButton; // Reference to the drop button
+    public Button resetButton; // Reference to the reset button
     
     void Start()
     {
@@ -25,6 +28,12 @@ public class EcsStartup : MonoBehaviour
 
         var objectGeneratorSystem = new ObjectGeneratorSystem();
         objectGeneratorSystem.prefab = prefab;
+        
+        var dropSystem = new DropSystem();
+        dropSystem.Initialize(dropButton);
+        
+        var resetSystem = new DropSystem();
+        resetSystem.Initialize(resetButton);
     
         var movementSystem = new MovementSystem();
     
@@ -33,8 +42,8 @@ public class EcsStartup : MonoBehaviour
             .Add(new StackSystem())
             .Add(new TableSystem())
             .Add(new SelectionSystem())
-            .Add(new ResetSystem())
-            .Add(new DropSystem())
+            .Add(resetSystem)
+            .Add(dropSystem)
             .Add(objectGeneratorSystem)
             .Add(movementSystem) // Add the MovementSystem
             .Init();
