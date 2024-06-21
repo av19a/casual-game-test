@@ -34,11 +34,16 @@ public class ResetSystem : IEcsRunSystem, IEcsInitSystem
                 while (stackComponent.Items.Count > 0)
                 {
                     GameObject item = stackComponent.Items.Pop();
-                    stackComponent.IsHolding = false;
+                    // stackComponent.IsHolding = false;
                     item.transform.position = stackComponent.StackPoint.position + new Vector3(Random.Range(-5, 5), -1, 0);
                     item.transform.SetParent(null);
                     item.GetComponent<Collider>().enabled = true;
                     stackComponent.StackCountText.text = stackComponent.Items.Count.ToString();
+                }
+                
+                if (stackComponent.Items.Count == 0)
+                {
+                    stackComponent.IsHolding = false;
                 }
             }
         }

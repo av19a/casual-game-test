@@ -32,6 +32,11 @@ public class TableSystem : IEcsRunSystem
                             item.GetComponent<Collider>().enabled = true;
                             stackComponent.StackCountText.text = stackComponent.Items.Count.ToString();
                         }
+                        
+                        if (stackComponent.Items.Count == 0)
+                        {
+                            stackComponent.IsHolding = false;
+                        }
                     }
                 }
             }
