@@ -32,7 +32,7 @@ public class EcsStartup : MonoBehaviour
         var dropSystem = new DropSystem();
         dropSystem.Initialize(dropButton);
         
-        var resetSystem = new DropSystem();
+        var resetSystem = new ResetSystem();
         resetSystem.Initialize(resetButton);
     
         var movementSystem = new MovementSystem();

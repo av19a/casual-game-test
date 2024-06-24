@@ -14,7 +14,6 @@ public class SelectionSystem : IEcsRunSystem
             foreach (var i in filter)
             {
                 ref var stackComponent = ref stackPool.Get(i);
-                // Add selection logic here
             }
         }
     }

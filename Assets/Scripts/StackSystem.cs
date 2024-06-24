@@ -20,6 +20,7 @@ public class StackSystem : IEcsRunSystem
                     GameObject item = hitCollider.gameObject;
                     item.transform.SetParent(stackComponent.StackPoint);
                     item.transform.localPosition = new Vector3(0, stackComponent.Items.Count * stackComponent.StackHeight, 0);
+                    item.transform.localRotation = Quaternion.Euler(0, 90, 0);
                     stackComponent.Items.Push(item);
                     stackComponent.IsHolding = true;
                     item.GetComponent<Collider>().enabled = false;
